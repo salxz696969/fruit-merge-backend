@@ -1,50 +1,91 @@
-# TypeScript Backend Application
+# Fruit Merge Backend (TypeScript + Express + MongoDB)
 
-This project is a simple backend application built with TypeScript, Express, and Supabase. It serves as a starting point for building scalable and maintainable server-side applications.
+Backend for the Fruit Merge game. It creates **game sessions** (MongoDB documents) and lets the client **update a session’s score**. Leaderboards are derived from stored game sessions.
 
-## Table of Contents
+## Requirements
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Routes](#routes)
-- [Environment Variables](#environment-variables)
-- [License](#license)
+- Node.js (recommended: latest LTS)
+- MongoDB (local or hosted)
 
-## Installation
+## Setup
 
-1. Clone the repository:
-   ```
-   git clone <repository-url>
-   cd typescript-backend-app
-   ```
+1. Install dependencies:
 
-2. Install the dependencies:
-   ```
-   npm install
-   ```
-
-3. Create a `.env` file based on the `.env.example` template and fill in your Supabase credentials.
-
-## Usage
-
-To start the server, run:
+```bash
+npm install
 ```
+
+2. Create a `.env` file in the project root:
+
+```bash
+PORT=3000
+MONGODB_URI="mongodb://127.0.0.1:27017/fruit-merge"
+```
+
+## Run
+
+- Development (auto-restart):
+
+```bash
+npm run dev
+```
+
+- Start:
+
+```bash
 npm start
 ```
 
-The server will be running on `http://localhost:3000`.
+The server listens on `http://localhost:$PORT`.
 
-## Routes
+## Data model
 
-- `GET /health`: Returns a simple status message to check if the server is running.
+- **Collection**: `gameSession`
+- **Document fields**:
+  - `date` (Date): last updated time for the session
+  - `score` (number): session score
+  - `_id` (ObjectId): used as `gameSessionId`
 
-## Environment Variables
+## API
 
-The following environment variables are required:
+Base path: `/game`
 
-- `SUPABASE_URL`: The URL of your Supabase project.
-- `SUPABASE_ANON_KEY`: The anonymous API key for your Supabase project.
+### Create a game session
 
-## License
+**POST** `/game`
 
-This project is licensed under the MIT License.
+Response:
+
+```json
+{ "gameSessionId": "..." }
+```
+
+### Update a session score
+
+**PUT** `/game/:sessionId/score`
+
+Body:
+
+```json
+{ "score": 123 }
+```
+
+Response: MongoDB update result.
+
+### Global all-time leaderboard (top 10)
+
+**GET** `/game/all-time`
+
+Response: list of sessions with `_id` and `score`, sorted by score desc.
+
+## Project structure
+
+- `src/app.ts`: Express app + route mounting + MongoDB connect
+- `src/routes/game.route.ts`: game endpoints
+- `src/controllers/game.controller.ts`: handlers (create session, update score, leaderboard)
+- `src/mongoose/mongoose.ts`: Mongo connection helper
+- `src/mongoose/game_session.model.ts`: `GameSession` schema/model
+
+## Notes
+
+- `gameSessionId` is the Mongo `_id` generated when you create a session.
