@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
-import { UserSubmission } from "../../mongoose/user_submission.model";
+import { GameSession } from "../../mongoose/game_session.model";
 
 export const globalTodaysLeaderboard = async (_req: Request, res: Response) => {
   try {
     const startOfDay = new Date();
     startOfDay.setHours(0, 0, 0, 0);
 
-    const submissions = await UserSubmission.find({
+    const submissions = await GameSession.find({
       date: { $gte: startOfDay },
     })
       .sort({ score: -1 })
@@ -27,7 +27,7 @@ export const globalThisWeekLeaderboard = async (
     const sevenDaysAgo = new Date();
     sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
 
-    const submissions = await UserSubmission.find({
+    const submissions = await GameSession.find({
       date: { $gte: sevenDaysAgo },
     })
       .sort({ score: -1 })
@@ -47,10 +47,7 @@ export const globalAllTimeLeaderboard = async (
   res: Response
 ) => {
   try {
-    const submissions = await UserSubmission.find(
-      { name: { $ne: null } },
-      { _id: 0, name: 1, score: 1 }
-    )
+    const submissions = await GameSession.find({}, { _id: 1, score: 1 })
       .sort({ score: -1 })
       .limit(10)
       .exec();
