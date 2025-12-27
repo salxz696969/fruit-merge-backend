@@ -202,7 +202,7 @@ This game celebrates Cambodian culture through:
 
 Watch the game in action! See the complete gameplay experience from start to finish:
 
-<video src="game-pic/demo.mp4" controls width="720"></video>
+[![Watch Demo](game-pic/image5.png)](https://www.youtube.com/watch?v=7kMyU8soRTQ)
 
 <div align="center">
 
