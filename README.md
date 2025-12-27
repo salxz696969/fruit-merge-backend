@@ -198,6 +198,12 @@ This game celebrates Cambodian culture through:
 
 ---
 
+## 🎬 Demo Video
+
+Watch the game in action! See the complete gameplay experience from start to finish:
+
+<video src="./game-pic/demo.mp4" controls width="720"></video>
+
 <div align="center">
 
 **Experience the mystical world of Cambodian temple jungles while enjoying classic puzzle gameplay!**
