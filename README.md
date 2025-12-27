@@ -19,20 +19,30 @@ Backend API for the captivating Cambodian fruit merging puzzle game **ជូរ�
 
 <div align="center">
 
-![Main Menu](game-pic/image5.png)
-_Main menu showcasing all 6 traditional Cambodian fruits with temple jungle backdrop_
-
-![Gameplay](game-pic/image2.png)
-_Active gameplay with fruit dropping mechanics and temple stone container_
-
-![About Screen](game-pic/image3.png)
-_Game information screen with development team credits and CADT branding_
-
-![Leaderboard](game-pic/image4.png)
-_Global leaderboard showing top players with session IDs_
-
-![Game Start](game-pic/image1.png)
-_Game start screen with traditional Khmer interface elements_
+<table>
+  <tr>
+    <td>
+      <img src="game-pic/image5.png" alt="Game Screenshot 5" width="180"><br>
+      <sub>Welcome scene with play button, leaderboard button and info button</sub>
+    </td>
+    <td>
+      <img src="game-pic/image4.png" alt="Game Screenshot 4" width="180"><br>
+      <sub>Leaderboard scene showing score ranking with game id</sub>
+    </td>
+    <td>
+      <img src="game-pic/image3.png" alt="Game Screenshot 3" width="180"><br>
+      <sub>Info Scene</sub>
+    </td>
+    <td>
+      <img src="game-pic/image2.png" alt="Game Screenshot 2" width="180"><br>
+      <sub>Fruit merging mechanics in action and main gameplay scene</sub>
+    </td>
+    <td>
+      <img src="game-pic/image1.png" alt="Game Screenshot 1" width="180"><br>
+      <sub>Game over screen and final scoring</sub>
+    </td>
+  </tr>
+</table>
 
 </div>
 
@@ -103,6 +113,7 @@ Base path: `/game`
 **POST** `/game`
 
 Response:
+
 ```json
 { "gameSessionId": "..." }
 ```
@@ -112,6 +123,7 @@ Response:
 **PUT** `/game/:sessionId/score`
 
 Body:
+
 ```json
 { "score": 123 }
 ```
@@ -149,11 +161,11 @@ src/
 
 This project is part of a comprehensive game development ecosystem:
 
-| Repository | Description | Link |
-|------------|-------------|------|
-| 🎮 **Game Client** | Unity game source code | [Fruit-Merge-Game](https://github.com/Neitong/Fruit-Merge-Game.git) |
-| 🖥️ **Backend API** | Express.js server & database | [fruit-merge-backend](https://github.com/salxz696969/fruit-merge-backend) |
-| 🌐 **Website** | Marketing website & web version | [fruit-merge-website](https://github.com/RaksaOC/fruit-merge-website.git) |
+| Repository         | Description                     | Link                                                                      |
+| ------------------ | ------------------------------- | ------------------------------------------------------------------------- |
+| 🎮 **Game Client** | Unity game source code          | [Fruit-Merge-Game](https://github.com/Neitong/Fruit-Merge-Game.git)       |
+| 🖥️ **Backend API** | Express.js server & database    | [fruit-merge-backend](https://github.com/salxz696969/fruit-merge-backend) |
+| 🌐 **Website**     | Marketing website & web version | [fruit-merge-website](https://github.com/RaksaOC/fruit-merge-website.git) |
 
 ### 🌐 Live Links
 
@@ -192,6 +204,6 @@ This game celebrates Cambodian culture through:
 
 [🌐 Visit Website](https://raksaoc.github.io/fruit-merge-website/) | [🎮 Play Online](https://raksaoc.github.io/fruit-merge-website/) | [📱 Download APK](https://raksaoc.github.io/fruit-merge-website/)
 
-*Built with ❤️ in Cambodia 🇰🇭*
+_Built with ❤️ in Cambodia 🇰🇭_
 
 </div>
